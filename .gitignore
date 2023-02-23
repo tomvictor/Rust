@@ -15,3 +15,7 @@ Cargo.lock
 /string_sum/.env/
 
 .idea
+
+# Added by cargo
+
+/target
