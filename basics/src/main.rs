@@ -77,4 +77,36 @@ fn main() {
     let six_point_four = x.1;
 
     let one = x.2;
+
+    // The Array Type
+    let a = [1, 2, 3, 4, 5];
+    let months = ["January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"];
+    let a: [i32; 5] = [1, 2, 3, 4, 5];
+    // The array named a will contain 5 elements that will all be set to the value 3 initially.
+    // This is the same as writing let a = [3, 3, 3, 3, 3]; but in a more concise way.
+    let a = [3; 5];
+    // Accessing Array Elements
+    let first = a[0];
+    let second = a[1];
+
+    // functions
+    say_something();
+    let value:i32 = get_value();
+    println!("{value}");
+    another_function(5);
+}
+
+fn say_something(){
+    println!("hello.....");
+}
+
+fn get_value()->i32{
+    let mut c:i32 = 100;
+    // no semicolon in the return
+    c+100
+}
+
+fn another_function(x: i32) {
+    println!("The value of x is: {x}");
 }
