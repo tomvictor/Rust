@@ -1,6 +1,6 @@
 [build-system]
 requires = ["maturin>=0.14,<0.15"]
-build-backend = "maturin"
+build-backend = "rust_module"
 
 [project]
 name = "string_sum"
