@@ -1,10 +1,6 @@
 use pyo3::prelude::*;
 
-fn demo_fn(){
-    println!("This is a demo function");
-    let resp = reqwest::blocking::get("https://httpbin.org/ip");
-    println!("{:#?}", resp);
-}
+mod run;
 
 
 #[pyclass]
@@ -40,7 +36,7 @@ fn rust_register_callback(python_api: &PyAny) -> PyResult<()> {
 #[pyfunction]
 fn rust_callback(python_api: &PyAny, message: String) -> PyResult<()> {
     println!("This is rust_callback");
-    demo_fn();
+    run::run();
     println!("Message = {}", message);
     python_api.getattr("some_operation")?.call0()?;
     Ok(())

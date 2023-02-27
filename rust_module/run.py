@@ -18,6 +18,7 @@ class PythonApi:
     def some_operation(self):
         print("This is PythonApi::some_operation")
 
+
 def python_function(python_api, callback):
     print("This is python_function")
     python_api.callback = callback
