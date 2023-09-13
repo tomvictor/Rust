@@ -52,11 +52,11 @@ fn main() {
 
 
     // The Boolean Type
-    let t = true;
+    let t:bool = true;
     let f: bool = false; // with explicit type annotation
 
     // The Character Type
-    let c = 'z';
+    let c: char = 'z';
     let z: char = 'ℤ'; // with explicit type annotation
     let heart_eyed_cat = '😻';
     println!("{heart_eyed_cat}");
