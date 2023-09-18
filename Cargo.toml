@@ -1,0 +1,13 @@
+[workspace]
+
+resolver = "2"
+
+members = [
+    "basics",
+    "Control Flow",
+    "Objects",
+    "Pointers",
+#    "PythonRust",
+    "webserver",
+    "Tokio",
+]
