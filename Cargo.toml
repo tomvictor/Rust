@@ -10,4 +10,5 @@ members = [
 #    "PythonRust",
     "webserver",
     "TokioRs",
+    "variables"
 ]
