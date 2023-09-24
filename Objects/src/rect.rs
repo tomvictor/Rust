@@ -1,13 +1,21 @@
 use std::clone::Clone;
 
 
+
+
 #[derive(Clone)]
-pub struct React {
+pub struct Rectangle {
     pub length:i32,
     pub breadth: i32,
 }
 
-impl React {
+impl  Rectangle {
+    pub fn new(length:i32,breadth:i32) -> Self{
+        Self{
+            length,
+            breadth
+        }
+    }
     
     pub fn area(&mut self) ->i32 {
         let area = self.length * self.breadth;
@@ -19,8 +27,8 @@ impl React {
         self.breadth = self.breadth*factor;
     }
 
-    pub fn log(&mut self){
-        let area = self.area();
-        println!("Length: {:?}\nBreadth: {:?}\nArea: {:?}\n", self.length, self.breadth, area);
-    }
+    // pub fn log(&mut self){
+    //     let area = self.area();
+    //     println!("Length: {:?}\nBreadth: {:?}\nArea: {:?}\n", self.length, self.breadth, area);
+    // }
 }
