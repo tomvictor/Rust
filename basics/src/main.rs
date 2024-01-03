@@ -1,4 +1,3 @@
-
 fn main() {
     // Variables and Mutability
     let mut y = 5;
@@ -7,7 +6,7 @@ fn main() {
     println!("The value of x is: {y}");
 
     // Constants
-    const THREE_HOURS_IN_SECONDS : u32 = 60 * 60 * 3;
+    const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 
     println!("THREE_HOURS_IN_SECONDS: {THREE_HOURS_IN_SECONDS}");
 
@@ -52,7 +51,7 @@ fn main() {
 
 
     // The Boolean Type
-    let t:bool = true;
+    let t: bool = true;
     let f: bool = false; // with explicit type annotation
 
     // The Character Type
@@ -92,19 +91,19 @@ fn main() {
 
     // functions
     say_something();
-    let value:i32 = get_value();
+    let value: i32 = get_value();
     println!("{value}");
     another_function(5);
 }
 
-fn say_something(){
+fn say_something() {
     println!("hello.....");
 }
 
-fn get_value()->i32{
-    let mut c:i32 = 100;
+fn get_value() -> i32 {
+    let mut c: i32 = 100;
     // no semicolon in the return
-    c+100
+    c + 100
 }
 
 fn another_function(x: i32) {

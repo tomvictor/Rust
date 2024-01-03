@@ -1,20 +1,19 @@
-
 // const declaration
 // type annotation is must for const
 // declare in th mod level
-const WARP_FACTOR:f64 = 9.9;
+const WARP_FACTOR: f64 = 9.9;
 
 fn main() {
     println!("Variables!");
     // tuple
-    let (bmws, vw) = (999,1000);
+    let (bmws, vw) = (999, 1000);
 
     // scope
     let x = 5;
 
     {
         let y = x;
-        println!("{}, {}",x,y);
+        println!("{}, {}", x, y);
     }            // drop
 
     // println!("{}",y);   error - out of scope
@@ -41,5 +40,4 @@ fn main() {
     }
     // this will works since the value if the variable is always guaranteed
     println!("{}", enigma);
-
 }

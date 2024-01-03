@@ -1,9 +1,7 @@
+use candid::{CandidType, Decode, Encode, Principal};
 use ic_agent::{Agent, identity::AnonymousIdentity};
 use ic_agent::agent::QueryBuilder;
-use candid::{Principal, Encode, Decode, CandidType, Nat};
 use serde::Deserialize;
-
-
 
 #[derive(CandidType, Deserialize)]
 struct CanisterResult {

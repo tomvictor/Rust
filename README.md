@@ -1,5 +1,6 @@
 # Rust
- Rust learning materials
+
+Rust learning materials
 
 ```shell
 cargo run -p variables

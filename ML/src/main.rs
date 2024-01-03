@@ -1,6 +1,6 @@
 use std::io::Write;
-use llm::Model;
 
+use llm::Model;
 
 fn main() {
     println!("load a GGML model from disk...");

@@ -1,5 +1,4 @@
-# Rust bindings for the Python 
-
+# Rust bindings for the Python
 
 ````
 >>> pip install maturin

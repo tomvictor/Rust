@@ -28,7 +28,7 @@ fn rust_register_callback(python_api: &PyAny) -> PyResult<()> {
         });
         python_api
             .getattr("set_callback")?
-            .call1((callback.into_py(py),))?;
+            .call1((callback.into_py(py), ))?;
         Ok(())
     })
 }

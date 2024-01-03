@@ -1,14 +1,14 @@
-mod rect;
 use rect::Rectangle;
 
+mod rect;
 
 trait Info {
     fn log(&mut self);
 }
 
 
-impl Info for Rectangle{
-    fn log(&mut self){
+impl Info for Rectangle {
+    fn log(&mut self) {
         let area = self.area();
         println!("Length: {:?}\nBreadth: {:?}\nArea: {:?}\n", self.length, self.breadth, area);
     }
@@ -16,8 +16,8 @@ impl Info for Rectangle{
 
 fn main() {
     println!("Rust Objects!");
-    
-    let mut polygon = Rectangle::new (30, 20);
+
+    let mut polygon = Rectangle::new(30, 20);
 
     polygon.log();
     polygon.scale(2);
