@@ -21,6 +21,16 @@ Because we are trying to read value of and uninitialized variable.
         x = 20; // This line will fail, compiler will detect the issue in the compile time.
     }
 
+
+## variables need to be defined as mutable inorder to change the value after declaration
+
+    fn mutable_variables(){
+        let mut x:i8 = 10;
+        println!("value of x is {}", x);
+        x = 20; // value changed here
+        println!("new value of x is {}", x); // this will print the new value
+    }
+
 ## Scope in Rust
 
     fn scope(){
@@ -31,15 +41,17 @@ Because we are trying to read value of and uninitialized variable.
         println!("x = {}, y = {}",x,y); // `y` is available in a different scope in the same function
     }
 
-## Variable redeclaration and scopes
+## Variable scopes and variable shadowing
 
     fn scope_redeclaration(){
     let x:i8 = 10;
 
-    {
-        let x:i8 = 20;
-    }
+    { // New block/scope starts here
+        let x:i8 = 20; // This is called shadowing,
+    } // The above x will be dropped here
+
     println!("value of x = {}", x);
-    // The value of x will be 10, because the redeclaration of x is allowed in different scope, 
+
+    // The value of x will be 10, because the redeclaration of x is allowed in different scope,
     // But will be dropped after the scope
 }

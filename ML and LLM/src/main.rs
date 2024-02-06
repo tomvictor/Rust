@@ -7,7 +7,7 @@ fn main() {
     // load a GGML model from disk
     let llama = llm::load::<llm::models::Llama>(
         // path to GGML file
-        std::path::Path::new("ML/models/open_llama_3b-f16.bin"),
+        std::path::Path::new("../models/open_llama_3b-f16.bin"),
         // llm::ModelParameters
         Default::default(),
         // load progress callback
