@@ -12,6 +12,6 @@ members = [
     "TokioRs",
     "Variables",
     "axumweb",
-    "canister",
-    "ML",
+    "ICP",
+    "ML", "Mutability",
 ]
