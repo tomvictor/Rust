@@ -8,6 +8,29 @@
 //     println!("value of x is {}", x)
 // }
 
+// condition evaluation happens at compile time
+// code below won't compile since the compiler can not guarantee the state of condition
+// fn conditional_evaluation_err(){
+//     let x:i8;
+//
+//     if true{
+//         x = 10;
+//     }
+//     println!("value of x is {}", x)
+// }
+
+// code below will compile since the compiler can guarantee the state of condition
+fn conditional_evaluation(){
+    let x:i8;
+
+    if true{
+        x = 10;
+    } else {
+        x = 20;
+    }
+    println!("value of x is {}", x)
+}
+
 
 // cannot assign twice to immutable variable
 // fn can_not_assign_twice(){

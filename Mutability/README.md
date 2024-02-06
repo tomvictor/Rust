@@ -15,6 +15,34 @@ fn use_of_uninitialized_variables_are_prohibited(){
 }
 ```
 
+## Condition evaluation happens at compile time
+
+Code below won't compile since the compiler can not guarantee the state of condition.
+```rust
+fn conditional_evaluation_err(){
+    let x:i8;
+
+    if true{
+        x = 10;
+    }
+    println!("value of x is {}", x)
+}
+```
+
+Code below will compile since the compiler can guarantee the state of the condition
+```rust
+fn conditional_evaluation(){
+    let x:i8;
+
+    if true{
+        x = 10;
+    } else {
+        x = 20;
+    }
+    println!("value of x is {}", x)
+}
+```
+
 ## Cannot assign twice to immutable variable
 
 ```rust
@@ -42,10 +70,12 @@ fn mutable_variables(){
 ```rust
 fn scope(){
     let x:i8 = 10;
-        {
-            let y:i8 = 20;
-        }
-    println!("x = {}, y = {}",x,y); // `y` is available in a different scope in the same function
+    {
+        let y:i8 = 20;
+    }
+    println!("x = {}, y = {}",x,y); 
+    // this will fail to compile since
+    // `y` is available in a different scope in the same function
 }
 ```
 
