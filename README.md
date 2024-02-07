@@ -1,12 +1,36 @@
-# Rust Learning Materials
+# Rust Programming language for safety and speed
+
+![image info](rust.png)
+
+## Introduction
+
+Rust is a non-garbage collected compiled systems programming language with strong typing. Rust started as a personal project of a Mozilla
+research employee on 2006 and later Mozilla began to sponsor the project in 2009. Eventually Mozilla adopted rust for their
+firefox and re-written the core in Rust in 2017. Rust is an advanced language with a lot of awesome features which developers love.
+Positioned as a compelling alternative to C/C++, Rust offers robust capabilities for system-level programming.
 
 ## Why Rust?
+
+C and C++ dominates the systems programming for decades. If we take Linux kernal, Android open source project and windows internals
+they all are written in C or C++. Rust is the only language which provides a safer alternative currently.
+
+Adoptions:
+
+* In 2021 [announced](https://security.googleblog.com/2021/04/rust-in-android-platform.html) the adoption of 
+Rust by stating that about 70% of Android’s high severity security vulnerabilities are related to memory safety.
+* Microsoft is also rapidly [transitioning to Rust](https://youtu.be/8T6ClX-y2AE?t=2610) for the windows core components and business services.
+Microsoft announced the plan for the transition and released [Rust SDK for windows](https://learn.microsoft.com/en-us/windows/dev-environment/rust/).
+Now we can write windows applications in Rust easily. Microsoft's security team stated that they are already seeing a 5-15% of speed bump in the components ported to Rust.
+* In 2023 Linus Torvalds accepted the Rust support for Linux kernal, which is one of the most sophisticated code base with millions of lines entirely written in C.
+
+
+## Main Features
+
 * Safety at compile time
 * Fearless concurrency
 * Speed
 
 ## Variables in Rust
-
 
 ```rust
 fn main() {
@@ -22,17 +46,24 @@ fn main() {
 
 We define a new variable using the `let` keyword.
 
-Variables are immutable by default, which means we cannot change the value of the variable `x` unless we explicitly make it mutable. But why is this the case? There are several advantages to having immutable variables.
+Variables are immutable by default, which means we cannot change the value of the variable `x` unless we explicitly make
+it mutable. But why is this the case? There are several advantages to having immutable variables.
 
-Firstly, an immutable variable can be shared across multiple threads very easily. Additionally, it is straightforward to store them in memory without the need to perform checks. There is no requirement to validate anything when passing around immutable variables to multiple functions. The decision to make variables immutable is driven by considerations of speed, concurrency, and safety. Immutable variables contribute to faster and safer code execution, especially in concurrent programming scenarios.
+Firstly, an immutable variable can be shared across multiple threads very easily.
+Additionally, it is straightforward to store them in memory without the need to perform checks.
+There is no requirement to validate anything when passing around immutable variables to multiple functions.
+The decision to make variables immutable is driven by considerations of speed, concurrency, and safety.
+Immutable variables contribute to faster and safer code execution, especially in concurrent programming scenarios.
 
-## Rust Mutability
+## Safety features in Rust
 
-Rust will find all the following bugs during compile time, so developers do not need to worry about these issues in production. The functions do not even need to be called.
+Rust will find all the following bugs during compile time, so developers do not need to worry about these issues in
+production. The functions do not even need to be called.
 
 ### Usage of uninitialized variables
 
-We cannot compile the program. Rust will detect the mutability issue during compile time because we are trying to read the value of an uninitialized variable.
+We cannot compile the program. Rust will detect the mutability issue during compile time because we are trying to read
+the value of an uninitialized variable.
 
 ```rust
 fn use_of_uninitialized_variables_are_prohibited() {
@@ -123,17 +154,21 @@ fn scope_redeclaration() {
 }
 ```
 
-# Rust Ownership
+## Rust Ownership
 
-## Only 3 rules to master
+### Only 3 rules to master
 
 * Each value has an owner. That means you cannot find any value in the memory without an owner.
 * Only one owner. Only one owner for all the variable and data in the memory. It cannot be shared! But can be borrowed.
 * The value gets dropped if the owner goes out of scope. There is no garbage collector to clear memory.
 
-## Accessing moved variables will throw an error at compile time
+### Accessing moved variables will throw an error at compile time
 
-In this example, we are trying to access the moved value. We need to understand the concept of stack and heap memory to understand the concept here. In Rust, the datatype consists of a capacity, length, and pointer to the actual memory in the heap. So whenever we assign the ownership to a new variable as below, Rust actually creates a new item in the stack by copying the length, capacity, and moving the data pointer to the new variable. At this moment, the old variable (s1) will get dropped.
+In this example, we are trying to access the moved value. We need to understand the concept of stack and heap memory to
+understand the concept here. In Rust, the datatype consists of a capacity, length, and pointer to the actual memory in
+the heap. So whenever we assign the ownership to a new variable as below, Rust actually creates a new item in the stack
+by copying the length, capacity, and moving the data pointer to the new variable. At this moment, the old variable (s1)
+will get dropped.
 
 ```rust
 fn main() {
@@ -144,11 +179,13 @@ fn main() {
 }
 ```
 
-## Mutable move operation
+### Mutable move operation
 
 Basics:
+
 * A variable consists of two parts: stack and heap.
-* Stack memory is really fast, but the size must be constant. It is basically a FIFO (First in, first out) data structure.
+* Stack memory is really fast, but the size must be constant. It is basically a FIFO (First in, first out) data
+  structure.
 * Heap memory is slow. But can hold a large amount of data, for example, strings.
 
 This code will work since the variable s1 is mutable. Mutable variables can be reassigned with new values and reused.
@@ -163,9 +200,14 @@ fn mutable_move_operation() {
 }
 ```
 
-## Cloning variables
+### Cloning variables
 
-Then how to make copies of variables? It is simple, clone the variable. Cloning means we create a new variable with capacity, length, and data pointer. but the difference here is that while cloning, data will be copied to a new memory in the heap. Then the variable will be a pointer to the new memory location. In Rust, we always use the clone method; it is very common to do the cheap clone operations.
+Then how to make copies of variables? It is simple, clone the variable.
+Cloning means we create a new variable with capacity, length, and data pointer.
+But the difference here is that while cloning, data will be copied to a new memory in the heap. Then the variable will
+be a pointer to the new memory location. In Rust, we always use the clone method; it is very common to do the cheap
+clone
+operations.
 
 ```rust
 fn clone_data() {
@@ -176,18 +218,24 @@ fn clone_data() {
 }
 ```
 
-## Copy and Clone
+### Copy and Clone
 
 * In Rust, Copy means the data in the stack will be copied, and the pointer to the heap will be updated.
-* In the clone operation, stack values will be copied, and heap data will be copied to a new location, and the pointer will be updated to the new location.
+* In the clone operation, stack values will be copied, and heap data will be copied to a new location, and the pointer
+  will be updated to the new location.
 
-## Dropping values
+### Dropping values
 
-In Rust, there is no garbage collector; then how will it keep track of memory? It is fairly simple and straightforward. When a variable goes out of scope, immediately the destructor method of that item will be called, then free the heap memory, and the stack memory will be popped. That's all, No memory leaks! no need to garbage collect the unused memory. In other GC languages the GC must be run at specific intervals to do this; for instance, in Python, it uses a method called reference counting to keep track of the memory allocation and
+In Rust, there is no garbage collector; then how will it keep track of memory? It is fairly simple and straightforward.
+When a variable goes out of scope, immediately the destructor method of that item will be called, then free the heap
+memory,
+and the stack memory will be popped. That's all, No memory leaks! no need to garbage collect the unused memory.
+In other GC languages the GC must be run at specific intervals to do this; for instance, in Python,
+it uses a method called reference counting to keep track of the memory allocation and
 
 cleanup.
 
-## Moving variable to another function
+### Moving variable to another function
 
 ```rust
 fn moving_to_functions() {
@@ -201,4 +249,86 @@ fn another_function(msg: String) {
 }
 ```
 
-One workaround for the above problem is to make s1 mutable and return something from the function call and resign the s1 with the function return. But there is a better way to fix this.
+One workaround for the above problem is to make `s1` mutable and return something from the function call and resign
+the `s1` with the function return.
+But there is a better way to fix this.
+
+## Reference and Borrowing
+
+Instead of moving the value and ownership of a variable, we can pass a reference to the value. That means, we are not
+actually moving the value to the new function. So, once the new reference goes out of scope, the reference will
+go out of scope, not the value or ownership. Under the hood whenever we create a new reference Rust creates a pointer
+in the background and points it to the actual variable.
+
+There are two type of references;
+
+* Immutable reference
+* Mutable reference
+
+Rules;
+
+* At any given time there should be only one mutable reference to a variable.
+* But we can create infinite number of immutable references.
+* The references can not point to null, Rust will take care of the creation and destruction of the references. This
+  is achieved by a concept called lifetimes.
+
+The reference is managed internally by using pointers like in C. But in Rust we do not need to deal the pointers
+directly
+The pointer de-referencing happens in the background. So we can use the `.` operator and call the methods on the
+reference
+object. But If needed we can also use the `*` in front of the reference to get the actual object and change the
+value(only for mutable reference) etc
+
+### Immutable reference
+
+Immutable references are created by passing the reference as you can see in the example below. We use `&` to pass
+reference
+and use `&String` in the function argument. You can also see how the de-referencing happens and calling the `is_empty`
+method is called
+on the reference.
+
+```rust
+fn main() {
+    println!("Reference and Borrowing in Rust");
+    let currency = "Euro".to_string();
+    println!("1. Default currency is {currency}");
+    check_currency(&currency); // Passing only the reference to another function
+    println!("2. Default currency is {currency}"); // It will works without any issue
+}
+
+// Accept a immutable reference
+fn check_currency(currency: &String) {
+    println!("Checking {currency}");
+    if currency.is_empty() {
+        println!("Invalid")
+    }
+}
+```
+
+### Mutable reference
+
+Immutable references can be created by using a special syntax `&mut variable`. In the example below we are passing a mutable reference
+to an `update_currency`. In the `update_currency` function we are de-referencing the pointer and assigning a new value. 
+
+```rust
+
+// Mutable reference example
+fn mutable_reference() {
+    let mut currency = "".to_string();
+    println!("1. Default currency is {currency}");
+    update_currency(&mut currency); // Passing the mutable reference to another function
+    println!("2. Default currency is {currency}"); // Print the updated value
+}
+
+fn update_currency(currency: &mut String) {
+  println!("Checking {currency}");
+  if currency.is_empty() {
+    println!("Currency is {currency}");
+    *currency = "SEK".to_string();
+  }
+}
+```
+The Borrow Checking mechanism is highly beneficial when working with concurrent applications. It allows us to safely pass
+references and eliminates the need to worry about safety issues. By adhering to borrowing rules, we can confidently pass 
+variables between threads. However, if these rules are not followed, the code will not compile. This approach aids in identifying
+potential memory leaks during the compilation process.

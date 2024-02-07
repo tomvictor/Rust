@@ -13,5 +13,5 @@ members = [
     "Variables",
     "Axum Web",
     "ICP Blockchain",
-    "ML and LLM", "Mutability", "Ownership",
+    "ML and LLM", "Mutability", "Ownership", "Borrowing",
 ]

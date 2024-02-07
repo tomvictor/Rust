@@ -1,6 +1,5 @@
 use candid::{CandidType, Decode, Encode, Principal};
 use ic_agent::{Agent, identity::AnonymousIdentity};
-use ic_agent::agent::QueryBuilder;
 use ic_agent::agent::UpdateBuilder;
 use serde::Deserialize;
 
@@ -32,8 +31,8 @@ async fn connect_to_canister() {
     let query_builder = UpdateBuilder::new(&agent, canister_id_principal, String::from("getUserToken"));
 
 
-    let args = Argument{
-        principal : Principal::from_text("4cay5-ew3bs-vr6yl-7iffu-67doc-l655v-dluy7-qplpx-7pkio-er5rt-uqe").unwrap()
+    let args = Argument {
+        principal: Principal::from_text("4cay5-ew3bs-vr6yl-7iffu-67doc-l655v-dluy7-qplpx-7pkio-er5rt-uqe").unwrap()
     };
 
     // let bytes = Encode!(&[(42, "arg1")], &(42u32, "arg2")).expect("Panic");

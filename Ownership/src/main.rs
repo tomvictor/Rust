@@ -1,6 +1,3 @@
-
-
-
 // Accessing moved values will throw error
 // fn invalid_move_operation(){
 //     let msg = "hello world!".to_string();
@@ -9,17 +6,17 @@
 //     println!("{}",msg); // this line will throw error "value borrowed here after move"
 // }
 
-fn mutable_move_operation(){
+fn mutable_move_operation() {
     let mut s1 = "hello world!".to_string();
     let s2 = s1; // owner changed to s2
     // But we can assign a new value to the s1, since it is mutable
     s1 = "something else".to_string();
-    println!("{}",s1); // This will work
+    println!("{}", s1); // This will work
 }
 
 
 // It is completely ok to clone data
-fn clone_data(){
+fn clone_data() {
     let s1 = "Hello world".to_string();
     let s2 = s1.clone();
     println!("s1: {}", s1);
@@ -32,7 +29,7 @@ fn clone_data(){
 //     println!("{}", s1);  // this will fail to compile, since the ownership moved and variable dropped
 // }
 
-fn another_function(msg: String){
+fn another_function(msg: String) {
     println!("msg is {}", msg)
 }
 
