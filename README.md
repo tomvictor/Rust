@@ -4,25 +4,24 @@
 
 ## Introduction
 
-Rust is a non-garbage collected compiled systems programming language with strong typing. Rust started as a personal project of a Mozilla
-research employee on 2006 and later Mozilla began to sponsor the project in 2009. Eventually Mozilla adopted rust for their
-firefox and re-written the core in Rust in 2017. Rust is an advanced language with a lot of awesome features which developers love.
-Positioned as a compelling alternative to C/C++, Rust offers robust capabilities for system-level programming.
+Rust is a non-garbage collected, compiled systems programming language with strong typing. It began as a personal project
+by a Mozilla research employee in 2006, and later, Mozilla started sponsoring the project in 2009. Eventually, Mozilla 
+adopted Rust for Firefox and rewrote the core in Rust in 2017. Rust is an advanced language with numerous features that 
+developers appreciate. Positioned as a compelling alternative to C/C++, Rust offers robust capabilities for system-level programming.
 
 ## Why Rust?
 
-C and C++ dominates the systems programming for decades. If we take Linux kernal, Android open source project and windows internals
-they all are written in C or C++. Rust is the only language which provides a safer alternative currently.
+C and C++ have dominated systems programming for decades. If we consider the Linux kernel, the Android Open Source Project, 
+and Windows internals, all of them are written in C or C++. Rust stands out as the only language currently providing a safer alternative.
 
 Adoptions:
 
-* In 2021 [announced](https://security.googleblog.com/2021/04/rust-in-android-platform.html) the adoption of 
-Rust by stating that about 70% of Android’s high severity security vulnerabilities are related to memory safety.
-* Microsoft is also rapidly [transitioning to Rust](https://youtu.be/8T6ClX-y2AE?t=2610) for the windows core components and business services.
-Microsoft announced the plan for the transition and released [Rust SDK for windows](https://learn.microsoft.com/en-us/windows/dev-environment/rust/).
-Now we can write windows applications in Rust easily. Microsoft's security team stated that they are already seeing a 5-15% of speed bump in the components ported to Rust.
-* In 2023 Linus Torvalds accepted the Rust support for Linux kernal, which is one of the most sophisticated code base with millions of lines entirely written in C.
-
+* In 2021, it was [announced](https://security.googleblog.com/2021/04/rust-in-android-platform.html) that Rust adoption for Android is underway,
+with the statement that about 70% of Android’s high-severity security vulnerabilities are related to memory safety.
+* Microsoft is also swiftly [transitioning to Rust](https://youtu.be/8T6ClX-y2AE?t=2610) for Windows core components and business services. 
+Microsoft announced the plan for the transition and released the [Rust SDK for Windows](https://learn.microsoft.com/en-us/windows/dev-environment/rust/). 
+Now, writing Windows applications in Rust is more accessible. Microsoft's security team has reported a 5-15% speed improvement in components ported to Rust.
+* In 2023, Linus Torvalds accepted Rust support for the Linux kernel, one of the most sophisticated codebases with millions of lines written entirely in C.
 
 ## Main Features
 
