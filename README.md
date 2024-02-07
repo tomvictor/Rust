@@ -1,6 +1,6 @@
 # Rust Programming language for safety and speed
 
-![image info](rust.png)
+![image info](rust-logo.png)
 
 ## Introduction
 
