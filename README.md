@@ -172,8 +172,8 @@ will get dropped.
 ```rust
 fn main() {
     let s1 = "hello world!".to_string();
-    let s2 = s1; // owner changed to new_msg, and msg variable is dropped here
-    // we cannot access the msg variable anymore
+    let s2 = s1; // owner changed to s2, and s1 variable is dropped here
+    // we cannot access the s1 variable anymore
     println!("{}", s1); // this line will throw an error "value borrowed here after move"
 }
 ```
