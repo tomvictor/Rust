@@ -5,29 +5,30 @@
 ## Introduction
 
 Rust is a non-garbage collected, compiled systems programming language with strong typing. It began as a personal project
-by a Mozilla research employee in 2006, and later, Mozilla started sponsoring the project in 2009. Eventually, Mozilla 
-adopted Rust for Firefox and rewrote the core in Rust in 2017. Rust is an advanced language with numerous features that 
+by a Mozilla research employee in 2006, and later, Mozilla started sponsoring the project in 2009. Eventually, Mozilla
+adopted Rust for Firefox and rewrote the core in Rust in 2017. Rust is an advanced language with numerous features that
 developers appreciate. Positioned as a compelling alternative to C/C++, Rust offers robust capabilities for system-level programming.
 
 ## Why Rust?
 
-C and C++ have dominated systems programming for decades. If we consider the Linux kernel, the Android Open Source Project, 
+C and C++ have dominated systems programming for decades. If we consider the Linux kernel, the Android Open Source Project,
 and Windows internals, all of them are written in C or C++. Rust stands out as the only language currently providing a safer alternative.
 
 Adoptions:
 
-* In 2021, it was [announced](https://security.googleblog.com/2021/04/rust-in-android-platform.html) that Rust adoption for Android is underway,
-with the statement that about 70% of Android’s high-severity security vulnerabilities are related to memory safety.
-* Microsoft is also swiftly [transitioning to Rust](https://youtu.be/8T6ClX-y2AE?t=2610) for Windows core components and business services. 
-Microsoft announced the plan for the transition and released the [Rust SDK for Windows](https://learn.microsoft.com/en-us/windows/dev-environment/rust/). 
-Now, writing Windows applications in Rust is more accessible. Microsoft's security team has reported a 5-15% speed improvement in components ported to Rust.
-* In 2023, Linus Torvalds accepted Rust support for the Linux kernel, one of the most sophisticated codebases with millions of lines written entirely in C.
+- In 2021, it was [announced](https://security.googleblog.com/2021/04/rust-in-android-platform.html) that Rust adoption for Android is underway,
+  with the statement that about 70% of Android’s high-severity security vulnerabilities are related to memory safety.
+- Microsoft is also swiftly [transitioning to Rust](https://youtu.be/8T6ClX-y2AE?t=2610) for Windows core components and business services.
+  Microsoft announced the plan for the transition and released the [Rust SDK for Windows](https://learn.microsoft.com/en-us/windows/dev-environment/rust/).
+  Now, writing Windows applications in Rust is more accessible. Microsoft's security team has reported a 5-15% speed improvement in components ported to Rust.
+- In 2023, Linus Torvalds accepted Rust support for the Linux kernel, one of the most sophisticated codebases with millions of lines written entirely in C.
+- In Feb 2024, White House released a report called [BACK TO THE BUILDING BLOCKS](https://www.whitehouse.gov/wp-content/uploads/2024/02/Final-ONCD-Technical-Report.pdf) which urges developers to dump C and C++ and suggest Rust as an alternaltive memory-safe programing language. [Read the full article](https://www.infoworld.com/article/3713203/white-house-urges-developers-to-dump-c-and-c.html).
 
 ## Main Features
 
-* Safety at compile time
-* Fearless concurrency
-* Speed
+- Safety at compile time
+- Fearless concurrency
+- Speed
 
 ## Variables in Rust
 
@@ -157,9 +158,9 @@ fn scope_redeclaration() {
 
 ### Only 3 rules to master
 
-* Each value has an owner. That means you cannot find any value in the memory without an owner.
-* Only one owner. Only one owner for all the variable and data in the memory. It cannot be shared! But can be borrowed.
-* The value gets dropped if the owner goes out of scope. There is no garbage collector to clear memory.
+- Each value has an owner. That means you cannot find any value in the memory without an owner.
+- Only one owner. Only one owner for all the variable and data in the memory. It cannot be shared! But can be borrowed.
+- The value gets dropped if the owner goes out of scope. There is no garbage collector to clear memory.
 
 ### Accessing moved variables will throw an error at compile time
 
@@ -182,10 +183,10 @@ fn main() {
 
 Basics:
 
-* A variable consists of two parts: stack and heap.
-* Stack memory is really fast, but the size must be constant. It is basically a FIFO (First in, first out) data
+- A variable consists of two parts: stack and heap.
+- Stack memory is really fast, but the size must be constant. It is basically a FIFO (First in, first out) data
   structure.
-* Heap memory is slow. But can hold a large amount of data, for example, strings.
+- Heap memory is slow. But can hold a large amount of data, for example, strings.
 
 This code will work since the variable s1 is mutable. Mutable variables can be reassigned with new values and reused.
 
@@ -219,8 +220,8 @@ fn clone_data() {
 
 ### Copy and Clone
 
-* In Rust, Copy means the data in the stack will be copied, and the pointer to the heap will be updated.
-* In the clone operation, stack values will be copied, and heap data will be copied to a new location, and the pointer
+- In Rust, Copy means the data in the stack will be copied, and the pointer to the heap will be updated.
+- In the clone operation, stack values will be copied, and heap data will be copied to a new location, and the pointer
   will be updated to the new location.
 
 ### Dropping values
@@ -261,14 +262,14 @@ in the background and points it to the actual variable.
 
 There are two type of references;
 
-* Immutable reference
-* Mutable reference
+- Immutable reference
+- Mutable reference
 
 Rules;
 
-* At any given time there should be only one mutable reference to a variable.
-* But we can create infinite number of immutable references.
-* The references can not point to null, Rust will take care of the creation and destruction of the references. This
+- At any given time there should be only one mutable reference to a variable.
+- But we can create infinite number of immutable references.
+- The references can not point to null, Rust will take care of the creation and destruction of the references. This
   is achieved by a concept called lifetimes.
 
 The reference is managed internally by using pointers like in C. But in Rust we do not need to deal the pointers
@@ -307,7 +308,7 @@ fn check_currency(currency: &String) {
 ### Mutable reference
 
 Immutable references can be created by using a special syntax `&mut variable`. In the example below we are passing a mutable reference
-to an `update_currency`. In the `update_currency` function we are de-referencing the pointer and assigning a new value. 
+to an `update_currency`. In the `update_currency` function we are de-referencing the pointer and assigning a new value.
 
 ```rust
 
@@ -327,7 +328,16 @@ fn update_currency(currency: &mut String) {
   }
 }
 ```
+
 The Borrow Checking mechanism is highly beneficial when working with concurrent applications. It allows us to safely pass
-references and eliminates the need to worry about safety issues. By adhering to borrowing rules, we can confidently pass 
+references and eliminates the need to worry about safety issues. By adhering to borrowing rules, we can confidently pass
 variables between threads. However, if these rules are not followed, the code will not compile. This approach aids in identifying
 potential memory leaks during the compilation process.
+
+## Finally, where should I start?
+
+Here are the some places to getting started;
+
+- [Rust home page](https://www.rust-lang.org/)
+- [The Rust Book](https://doc.rust-lang.org/stable/book/)
+- [Examples](https://github.com/tomvictor/Rust)
