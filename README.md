@@ -341,3 +341,4 @@ Here are the some places to getting started;
 - [Rust home page](https://www.rust-lang.org/)
 - [The Rust Book](https://doc.rust-lang.org/stable/book/)
 - [Examples](https://github.com/tomvictor/Rust)
+- [MQTT Example for ESP32](https://github.com/esp-rs/std-training/blob/main/intro/mqtt/exercise/examples/solution_publ_rcv.rs)
