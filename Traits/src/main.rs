@@ -73,18 +73,40 @@ where
     println!("This animal says {}", animal.talk())
 }
 
-fn main() {
-    let marly = Dog {
+// Traits as return type
+// it only works if we retun single type, which means we can not
+// return the Cat Type
+fn create_any_animal_opt1() -> impl Animal {
+    Dog {
         name: "Marly".into(),
-    };
-    let caty = Cat {
-        name: "caty".into(),
-    };
+    }
+}
+
+fn create_any_animal_opt2(cat: bool) -> Box<dyn Animal> {
+    if cat {
+        let cat = Cat {
+            name: "Caty".into(),
+        };
+        Box::new(cat)
+    } else {
+        let duck = Duck {
+            name: "Flighty".into(),
+        };
+        Box::new(duck)
+    }
+}
+
+fn main() {
+    let marly = create_any_animal_opt1();
     let björn = Horse {
         name: "Björn".into(),
     };
 
     make_animal_talk_opt1(&marly);
-    make_animal_talk_opt2(&caty);
     make_animal_talk_opt3(&björn);
+
+    let caty = create_any_animal_opt2(true);
+    println!("{}", &caty.talk());
+    // this will not work; for that the receiving type of the func need to be wraped inside box
+    // make_animal_talk_opt2(&caty);
 }
