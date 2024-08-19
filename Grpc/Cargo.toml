@@ -1,0 +1,19 @@
+[package]
+name = "Grpc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.0", features = ["rt-multi-thread", "macros"] }
+prost = "0.13"
+tonic = "0.12.1"
+tokio-util = "0.7.8"
+
+
+[build-dependencies]
+tonic-build = "0.11"
+# tokio-util = "0.7.11"
+tokio-util = { version = "0.7.11", optional = true }
+
+[features]
+cancellation = ["dep:tokio-util"]
